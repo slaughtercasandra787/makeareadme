@@ -30,7 +30,7 @@ const promptUser = async () => {
                 type: 'list',
                 name: 'license',
                 message: 'Choose a license for your project:',
-                choices: ['MIT', 'Apache', 'GPL', 'BSD', 'None']
+                choices: ['MIT', 'Apache_2.0', 'GPL', 'BSD', 'None']
             },
             {
                 type: 'input',
@@ -67,7 +67,7 @@ async function init() {
     const answers = await promptUser();
     console.log(answers)
     const results = generateMarkdown(answers)
-    fs.writeFile('README.md', results, (err) => {
+    fs.writeFile('TESTTWO.md', results, (err) => {
         err ? console.error(err) : console.log('created!');
     });
 }

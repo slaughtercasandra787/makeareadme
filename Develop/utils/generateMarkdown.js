@@ -10,36 +10,48 @@
 // If there is no license, return an empty string
 // function renderLicenseSection(license) {}const path = require('path');   
 // const fs = require('fs');
-const renderLicenseBadge = (licence) => {
-  switch (license) {
-    case 'MIT':
-      return '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)';
-    case 'Apache 2.0':
-      return '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)';
-    // Add more cases for other licenses as needed
-    default:
-      return '';
+
+// const renderLicenseBadge = (license) => {
+//   switch (license) {
+//     case 'MIT':
+//       return '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)';
+//       break;
+//     case 'Apache 2.0':
+//       return '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)';
+//    case 'None':
+//   return''
+//    // Add more cases for other licenses as needed
+//     default:
+//       return '';
+//   }
+// };
+
+const renderLicenseBadge = (license) =>{
+if (license !== 'None' ) {
+  return `[![License](https://img.shields.io/badge/License-${license}-blue.svg)]`;
   }
+  return '';
 };
 
 const renderLicenseLink = (license) => {
-  switch (license) {
-    case 'MIT':
-      return '[MIT License](https://opensource.org/licenses/MIT)';
-    case 'Apache 2.0':
-      return '[Apache License 2.0](https://opensource.org/licenses/Apache-2.0)';
-    // Add more cases for other licenses as needed
-    default:
-      return '';
-  }
+  if (license !== 'None' ) {
+    return `(https://opensource.org/licenses/${license})`;
+    }
+    return '';
 };
 
-const generateMarkdown = ({ results, licenseInfo }) => {
-  const badgeUrl = renderLicenseBadge(licenseInfo.license);
-  const licenseLink = renderLicenseLink(licenseInfo.license);
+function renderBadgeSection(license) {
+  return `${renderLicenseBadge(license)}${renderLicenseLink(license)}`
 
+};
+
+
+
+const generateMarkdown = (results) => {
+  // const badgeUrl = renderLicenseBadge(results.license);
+  // const licenseLink = renderLicenseLink(results.license);
   return `# ${results.title}
-${badgeUrl}
+  ${renderBadgeSection(results.license)}
 ## Description
 ${results.description}
 ## Table of Contents
@@ -57,8 +69,7 @@ ${results.installation}
 ${results.usage}
 
 ## License
-This project is licensed under the [${licenseInfo.license} License](${licenseLink}).
-![License Badge](${badgeUrl})
+This project is licensed under the ${results.license}
 
 ## Contributing
 ${results.contributing}
