@@ -58,7 +58,6 @@ const promptUser = async () => {
     }
 };
 
-
 // Function to generate README content
 
 // Function to write README file
