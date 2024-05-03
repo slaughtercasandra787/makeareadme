@@ -26,32 +26,72 @@
 //   }
 // };
 
+
+const licenseInfo =  {
+  'MIT': {
+      badgeUrl: 'https://img.shields.io/badge/License-MIT-yellow.svg',
+      licenseLink: 'https://opensource.org/licenses/MIT'
+  },
+  'Apache_2.0': {
+      badgeUrl: 'https://img.shields.io/badge/License-Apache%202.0-blue.svg',
+      licenseLink: 'https://www.apache.org/licenses/LICENSE-2.0'
+  },
+  'GPL': {
+      badgeUrl: 'https://img.shields.io/badge/License-GPLv3-blue.svg',
+      licenseLink: 'https://www.gnu.org/licenses/gpl-3.0'
+  },
+  'BSD': {
+      badgeUrl: 'https://img.shields.io/badge/License-BSD%203--Clause-blue.svg',
+      licenseLink: 'https://opensource.org/licenses/BSD-3-Clause'
+  },
+  'None': {
+      badgeUrl: '',
+      licenseLink: ''
+  }
+};
+
+
+// // Function to render license badge
+// const renderLicenseBadge = (results) => {
+//   // const license = results.license;
+//   const badgeUrl = licenseInfo[results.license] ? licenseInfo[license].badgeUrl : '';
+//   return badgeUrl ? `[![License Badge](${badgeUrl})]` : '';
+// };
+
+// // Function to render license link
+// const renderLicenseLink = (results) => {
+//   const license = results.license;
+//   const licenseLink = licenseInfo[license] ? licenseInfo[license].licenseLink : '';
+//   return licenseLink ? `(${licenseLink})` : '';
+// };
+
+
 const renderLicenseBadge = (license) =>{
 if (license !== 'None' ) {
-  return `[![License](https://img.shields.io/badge/License-${license}-blue.svg)]`;
+  return `[![License](${licenseInfo[license].badgeUrl})]`;
   }
   return '';
 };
 
 const renderLicenseLink = (license) => {
   if (license !== 'None' ) {
-    return `(https://opensource.org/licenses/${license})`;
+    return `[![License](${licenseInfo[license].licenseLink})]`;
     }
     return '';
 };
 
-function renderBadgeSection(license) {
-  return `${renderLicenseBadge(license)}${renderLicenseLink(license)}`
-
+// Function to render badge section
+const renderBadgeSection = (license) => {
+  return `${renderLicenseBadge(license)}${renderLicenseLink(license)}`;
 };
 
 
 
 const generateMarkdown = (results) => {
-  // const badgeUrl = renderLicenseBadge(results.license);
-  // const licenseLink = renderLicenseLink(results.license);
   return `# ${results.title}
   ${renderBadgeSection(results.license)}
+  ## Title
+  ${results.title}
 ## Description
 ${results.description}
 ## Table of Contents
@@ -97,113 +137,6 @@ module.exports = generateMarkdown;
 //   }
 // }
 
-// const licenses = {
-//   MIT: new License('MIT', 'https://img.shields.io/badge/License-MIT-yellow.svg', 'https://opensource.org/licenses/MIT'),
-//   Apache: new License('Apache 2.0', 'https://img.shields.io/badge/License-Apache%202.0-blue.svg', 'https://opensource.org/licenses/Apache-2.0'),
-//   // Add more licenses as needed
-// };
-
-// const renderLicenseBadge = (licenseName) => {
-//   const license = licenses[licenseName];
-//   return license ? `[![License: ${license.name}](${license.badgeUrl})](${license.linkUrl})` : '';
-// };
-
-// const renderLicenseLink = (licenseName) => {
-//   const license = licenses[licenseName];
-//   return license ? `[${license.name} License](${license.linkUrl})` : '';
-// };
-
-// const generateMarkdown = ({ results, licenseInfo }) => {
-//   const badgeUrl = renderLicenseBadge(licenseInfo.license);
-//   const licenseLink = renderLicenseLink(licenseInfo.license);
-
-//   return `# ${results.title}
-// ${badgeUrl}
-// ## Description
-// ${results.description}
-// ## Table of Contents
-// - [Installation Instructions](#Installation-instructions)
-// - [Usage](#usage)
-// - [License](#license)
-// - [Contributing](#contributing)
-// - [Tests](#tests)
-// - [Questions](#questions)
-
-// ## Installation
-// ${results.installation}
-
-// ## Usage
-// ${results.usage}
-
-// ## License
-// This project is licensed under the ${licenseLink}.
-// ${badgeUrl}
-
-// ## Contributing
-// ${results.contributing}
-
-// ## Tests
-// ${results.tests}
-
-// ## Questions
-// For questions or inquiries, please contact me via:
-// - GitHub: [${results.github}](https://github.com/${results.github})
-// - Email: ${results.email}
-// `;
-// };
 
 // module.exports = generateMarkdown;
 
-// // Function to render license badge
-// // TODO: Create a function to generate markdown for README
-// const generateMarkdown = ({results, licenseInfo})
-// function generateMarkdown(results) {
-//   return `# ${results.title}
-
-// [License Badge](${badgeUrl})
-
-// ## Description
-
-// ${results.description}
-
-// ## Table of Contents
-
-// - [Installation Instructions ](#Installation-instructions)
-// - [Usage](#usage)
-// - [License](#license)
-// - [Contributing](#contributing)
-// - [Tests](#tests)
-// - [Questions](#questions)
-
-// ## Installation
-
-// ${results.installation}
-
-// ## Usage
-
-
-// ${results.usage}
-
-// ## License
-
-// This project is licensed under the [${license} License](${licenseLink}).  
-// ![License Badge](${badgeUrl})
-
-// ## Contributing
-
-// ${results.contributing}
-
-// ## Tests
-
-// ${results.tests}
-
-// ## Questions
-
-// For questions or inquiries, please contact me via:
-
-// - GitHub: [${results.github}](https://github.com/${results.github})
-// - Email: ${results.email}
-// `;
-// }
-
-// module.exports = generateMarkdown;

@@ -67,7 +67,7 @@ async function init() {
     const answers = await promptUser();
     console.log(answers)
     const results = generateMarkdown(answers)
-    fs.writeFile('TESTTWO.md', results, (err) => {
+    fs.writeFile('README.md', results, (err) => {
         err ? console.error(err) : console.log('created!');
     });
 }
