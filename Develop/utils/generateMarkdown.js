@@ -8,8 +8,6 @@
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-// function renderLicenseSection(license) {}const path = require('path');   
-// const fs = require('fs');
 
 
 const licenseInfo =  {
@@ -35,27 +33,24 @@ const licenseInfo =  {
   }
 };
 
-
 const renderLicenseBadge = (license) =>{
-if (license !== 'None' ) {
-  return `[![License](${licenseInfo[license].badgeUrl})]`;
-  }
-  return '';
-};
-
-const renderLicenseLink = (license) => {
   if (license !== 'None' ) {
-    return `[![License](${licenseInfo[license].licenseLink})]`;
+    return `[![License](${licenseInfo[license].badgeUrl})]`;
     }
     return '';
-};
+  };
+  
+  const renderLicenseLink = (license) => {
+    if (license !== 'None' ) {
+      return `[![License](${licenseInfo[license].licenseLink})]`;
+      }
+      return '';
+  };
 
 // Function to render badge section
 const renderBadgeSection = (license) => {
   return `${renderLicenseBadge(license)}${renderLicenseLink(license)}`;
 };
-
-
 
 const generateMarkdown = (results) => {
   return `# ${results.title}
@@ -79,7 +74,7 @@ ${results.installation}
 ${results.usage}
 
 ## License
-This project is licensed under the ${results.license}
+This project is licensed under the  ${renderBadgeSection(results.license)}
 
 ## Contributing
 ${results.contributing}
