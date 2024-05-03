@@ -11,21 +11,6 @@
 // function renderLicenseSection(license) {}const path = require('path');   
 // const fs = require('fs');
 
-// const renderLicenseBadge = (license) => {
-//   switch (license) {
-//     case 'MIT':
-//       return '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)';
-//       break;
-//     case 'Apache 2.0':
-//       return '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)';
-//    case 'None':
-//   return''
-//    // Add more cases for other licenses as needed
-//     default:
-//       return '';
-//   }
-// };
-
 
 const licenseInfo =  {
   'MIT': {
@@ -49,21 +34,6 @@ const licenseInfo =  {
       licenseLink: ''
   }
 };
-
-
-// // Function to render license badge
-// const renderLicenseBadge = (results) => {
-//   // const license = results.license;
-//   const badgeUrl = licenseInfo[results.license] ? licenseInfo[license].badgeUrl : '';
-//   return badgeUrl ? `[![License Badge](${badgeUrl})]` : '';
-// };
-
-// // Function to render license link
-// const renderLicenseLink = (results) => {
-//   const license = results.license;
-//   const licenseLink = licenseInfo[license] ? licenseInfo[license].licenseLink : '';
-//   return licenseLink ? `(${licenseLink})` : '';
-// };
 
 
 const renderLicenseBadge = (license) =>{
@@ -127,16 +97,4 @@ For questions or inquiries, please contact me via:
 module.exports = generateMarkdown;
 
 
-
-
-// class License {
-//   constructor(name, badgeUrl, linkUrl) {
-//       this.name = name;
-//       this.badgeUrl = badgeUrl;
-//       this.linkUrl = linkUrl;
-//   }
-// }
-
-
-// module.exports = generateMarkdown;
 
